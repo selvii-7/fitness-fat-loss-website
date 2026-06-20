@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Body Balance · Weight Loss Journey</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    html, body
+	{
+	margin:0;
+	padding:0;
+	min-height:100vh;
+	background: linear-gradient(120deg, #e0f7fa 0%, #f3ffe8 100%);
+	}
+    body 
+	{
+	font-family:'Segoe UI',Arial,sans-serif;
+	color:#174a3b;
+	}
+    .header 
+	{
+      display:flex;
+	  align-items:center;
+	  gap:2em;
+      background: linear-gradient(90deg,#11c89f 40%,#50e0d0 100%);
+      padding:1.18em 1.6em 1.18em 2em;
+      font-size:1.32em;
+	  box-shadow:0 6px 18px #20ae7a19;
+      position:sticky;
+	  top:0;
+	  z-index:10;
+    }
+    .logo 
+	{
+	font-weight:900;
+	color:#fff;
+	font-size:1.21em;
+	letter-spacing:.11em;
+	}
+    .navlinks 
+	{
+	display:flex;
+	gap:1.5em;
+	}
+    .navlink 
+	{
+	background:none; 
+	border: none;
+	color: #fff; 
+	font-size:.72em; cursor:pointer;
+	text-decoration:underline;
+	font-weight:600;
+	}
+    .navlink.selected, .navlink:focus, .navlink:hover
+	{
+	color:#ffd900; 
+	}
+    nav 
+	{
+	background: none;
+	margin-top: 0.2em;
+	text-align: center;
+	}
+    .nav-wrap
+	{ 
+	max-width: 900px;
+	margin: 0 auto; 
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: .7em 0 .6em 0;
+	gap: 1.1em;
+	}
+    .nav-btn
+	{ background: none;
+	border: none; color: #119a77;
+	font-weight: bold;
+	font-size: 1.19em;
+	letter-spacing: .02em;
+	padding: .3em 1.6em;
+	border-radius: 23px;
+	outline: none;
+	cursor: pointer; 
+	opacity: .93;
+	transition: color .20s, background .14s;
+	}
+    .nav-btn.active, .nav-btn:hover
+	{
+	background: linear-gradient(90deg,#0ef2a9 10%, #29dda9 90%);
+	color: #fff; 
+	box-shadow: 0 2px 12px #12b48018;
+	}
+    .section 
+	{
+	display:none;
+	max-width:780px;
+	margin:0 auto;
+	padding:2.5em 1.1em;
+	}
+    .section.active 
+	{
+	display:block;
+	}
+    .welcome-card 
+	{
+	background: #fff;
+	border-radius:18px;
+	box-shadow:0 7px 32px #2ec6a927;
+	max-width:445px;
+	width:98vw;
+	margin:2.5em auto 1.6em auto;
+	padding:2em 1.2em 2.7em 1.2em;
+	text-align:center;
+	}
+    .welc-quote 
+	{
+	font-size:1.24em;
+	color:#13a67b;
+	font-style:italic;
+	font-weight:600;
+	margin-bottom:2.3em;
+	}
+  .images-flex{
+display:flex;
+gap:20px;
+justify-content:center;
+}
+
+.welc-img{
+width:120px;
+height:120px;
+object-fit:cover;
+border-radius:15px;
+}
+    .big-action-btn 
+	{
+	margin:2.5em auto 0 auto;
+	display:block; 
+	font-size:1.19em;
+	font-weight:700;
+    padding:1.05em 0;
+	width:97%; 
+	max-width:370px;
+    background:linear-gradient(89deg,#14b135 10%,#08cfc7 100%);
+    color:#fff;
+	border-radius:23px; 
+	border:none;cursor:pointer;
+	transition:background .13s;
+	}
+    .big-action-btn:hover 
+	{
+	background:linear-gradient(89deg,#1cbd6a 5%,#1fccb7 95%);
+	}
+    .form-card 
+	{
+	background: #fff; 
+	border-radius:17px; 
+	box-shadow:0 9px 32px #26cdb81a; 
+	max-width:420px;
+	width:97vw;
+	margin:2.6em auto 1.8em auto;
+	padding:2.5em 1.2em 2.1em 1.2em;
+	}
+    .form-title
+	{
+	font-weight:900; 
+	color:#13a67b; 
+	font-size:1.35em;
+	margin-bottom:.9em; 
+	text-align:center;
+	}
+    .input-block 
+	{
+	margin-bottom:1.25em;
+	}
+    .form-label 
+	{
+	font-weight:600;
+	color:#029a65; 
+	margin-bottom:.21em;
+	display:block;
+	}
+    .inputfld 
+	{
+	width:99%;
+	font-size: 1.12em; 
+	padding: .7em .9em;
+	border-radius:10px;
+	border:2px solid #b9f0d9;
+    background:#ebfdf7;
+	transition:border .2s, background .16s;
+	outline:none; 
+	font-family:inherit;
+	}
+    .inputfld:focus 
+	{
+	background: #f6fff9;
+	border:2px solid #13dc78;
+	}
+    .inputfld.invalid 
+	{
+	border:2px solid #e44b3a!important;
+	background:#ffeaea!important;
+	}
+    .inputfld.valid 
+	{
+	border:2px solid #20b266!important;
+	background:#f5fff7!important;
+	}
+    .fielderr
+	{
+	font-size:.98em;
+	color:#e03a3a;
+	min-height:1.19em;
+	margin-left:.2em;
+	margin-top:2px;
+	}
+    .greeting 
+	{font-size:1.22em;
+	color:#169a7c; 
+	font-weight:600;
+	margin-top:-17px;
+	margin-bottom:1.2em;
+	}
+    .plan-group 
+	{
+	display:flex;
+	flex-direction:column;
+	gap:1.3em;
+	}
+    .plan-card 
+	{
+	background:linear-gradient(88deg,#f5fffd 80%,#b4ffe7 99%);
+	border-radius:19px;
+	box-shadow:0 7px 22px #13f2d013; 
+	display:flex;
+	align-items:center;
+	gap:1.1em;
+	padding:1em 1em;
+	}
+    .plan-img 
+	{
+	width:65px;
+	height:65px;
+	border-radius:13px;
+	object-fit:cover;
+	box-shadow:0 2px 13px #13e9ae18;
+	}
+    .plan-day 
+	{
+	font-weight:700;
+	color:#17a466;
+	margin-bottom:5px;
+	font-size:1.11em;
+	}
+    .plan-info-wrap 
+	{
+	flex:1;
+	}
+    .plan-desc
+	{
+	font-size:1.08em;
+	}
+    .section-heading 
+	{
+	text-align:center; 
+	color:#01b19c; 
+	font-size:2em;
+	font-weight:900;
+	margin: 1em 0 1em 0;
+	}
+    .exercise-video 
+	{ 
+	width:180px;
+	height:112px;
+	border-radius:13px;
+	margin-right:1em;
+	border:2px solid #d9f9f5; 
+	box-shadow:0 2px 15px #11e7df16;
+	}
+    .reflect-card 
+	{
+	background:#fff;
+	border-radius:17px;
+	box-shadow:0 8px 28px #1ac8ce16;
+	max-width:430px;
+	margin:2.4em auto 0 auto;
+	padding:2.3em 1.1em 2em 1.1em;
+	}
+    .reflect-title 
+	{
+	font-size:1.13em;
+	color:#19b475;
+	font-weight:700;
+	margin-bottom:.8em;
+	}
+    .reflectbox 
+	{
+	width:98%;
+	min-height:80px;
+	border-radius:10px;
+	border:2px solid #d3f2ec;
+	font-size:1.07em;
+	padding:.82em .9em;
+	margin-bottom:1em;
+	}
+    .about-card
+	{
+	background:#fff;
+	border-radius:17px;
+	box-shadow:0 8px 28px #1ac8ce16;
+	max-width:480px;
+	margin:2.4em auto 0 auto;
+	padding:2.6em 2.2em 2.2em 2.2em;
+	}
+    .about-card-title 
+	{
+	color:#19b475;
+	font-size:1.35em;
+	font-weight:800;
+	margin-bottom:.5em;
+	text-align:center;
+	}
+    .about-remark
+	{
+	background: #ecf9f7;
+	color: #158580;
+	border-left:5px solid #19b475;
+	margin:.5em 0 1.2em 0;
+	padding:.93em 1.2em;
+	border-radius: 8px;
+	}
+    .footer 
+	{
+	background:#18b794;
+	color:#fff;
+	font-size:1.08em;
+	letter-spacing:.04em; 
+	padding:1.13em 0 1.08em 0;
+	text-align:center;
+	border-top-left-radius:20px;
+	border-top-right-radius:20px;
+	width:100%;
+	margin-top:3em;
+	position:relative;
+	}
+    @media (max-width:800px)
+	{
+      .exercise-video
+	  {
+	  width:100%;
+	  height:170px;
+	  max-width:99vw;
+	  }
+      .plan-card
+	  {
+	  flex-direction:column;
+	  align-items:flex-start;
+	  }
+    }
+    @media (max-width:570px)
+	{
+      .header
+	  {padding:.8em .2em;
+	  }
+      .welcome-card,.form-card,.reflect-card,.about-card
+	  {padding:.7em .22em .74em .22em;
+	  }
+      .plan-card
+	  {flex-direction:column;
+	  align-items:flex-start;
+	  }
+      .exercise-video
+	  {width:100%;
+	  height:40vw;
+	  }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="logo">Body Balance</span>
+    <div class="navlinks">
+      <button class="navlink" id="navlink-about" onclick="showStaticSection('about')">About Us</button>
+      <button class="navlink" id="navlink-contact" onclick="showStaticSection('contact')">Contact</button>
+    </div>
+  </div>
+  <nav>
+    <div class="nav-wrap">
+      <button type="button" class="nav-btn active" id="navHome" onclick="goSection(0)">Home</button>
+      <button type="button" class="nav-btn" id="navForm" onclick="goSection(1)">Your Details</button>
+      <button type="button" class="nav-btn" id="navDiet" onclick="goSection(2)">Diet Plan</button>
+      <button type="button" class="nav-btn" id="navExercise" onclick="goSection(3)">Exercise</button>
+      <button type="button" class="nav-btn" id="navReflect" onclick="goSection(4)">Reflection</button>
+      <button type="button" class="nav-btn" id="navAboutYou" onclick="goSection(5)">About You</button>
+    </div>
+  </nav>
+  <main>
+    <!-- PAGE 1: WELCOME -->
+    <div class="section active" id="section-welcome">
+      <div class="welcome-card">
+        <div class="welc-quote">
+          "Sweat today, smile tomorrow."
+        </div>
+  <div class="images-flex">
+  <img class="welc-img" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438" alt="Exercise1">
+  
+  <img class="welc-img" src="https://images.unsplash.com/photo-1534367610401-9f5ed68180aa" alt="Exercise2">
+  
+  <img class="welc-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400" alt="Exercise3">
+</div>
+        <div class="welc-quote" style="font-size:1.04em; color:#219e7a; font-style:normal;">
+          “The difference between try and triumph is a little ‘umph’.”
+        </div>
+        <button class="big-action-btn" onclick="goSection(1)">Start Your Journey</button>
+      </div>
+    </div>
+    <!-- PAGE 2: USER INFO FORM ("YOUR DETAILS") -->
+    <div class="section" id="section-form">
+      <form class="form-card" id="userform" autocomplete="off" novalidate>
+        <div class="form-title">Your Details</div>
+        <div class="input-block">
+          <label class="form-label" for="uname">Name</label>
+          <input class="inputfld" id="uname" maxlength="40" placeholder="Your Name">
+          <div class="fielderr" id="err_uname"></div>
+        </div>
+        <div class="input-block">
+          <label class="form-label" for="age">Age</label>
+          <input class="inputfld" id="age" maxlength="3" placeholder="Eg: 21">
+          <div class="fielderr" id="err_age"></div>
+        </div>
+        <div class="input-block">
+          <label class="form-label" for="weight">Weight (kg)</label>
+          <input class="inputfld" id="weight" maxlength="3" placeholder="Eg: 65">
+          <div class="fielderr" id="err_weight"></div>
+        </div>
+        <div class="input-block">
+          <label class="form-label" for="height">Height (cm)</label>
+          <input class="inputfld" id="height" maxlength="3" placeholder="Eg: 172">
+          <div class="fielderr" id="err_height"></div>
+        </div>
+        <button class="big-action-btn" type="submit" style="margin-top:2.6em;">Next: Diet Plan</button>
+      </form>
+    </div>
+    <!-- PAGE 3: DIET PLAN -->
+    <div class="section" id="section-diet">
+      <div class="section-heading">7-Day Diet Plan</div>
+      <div class="greeting" id="diet-greeting"></div>
+      <div class="plan-group">
+        <div class="plan-card"><img class="plan-img" src="https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=120" alt=""><div class="plan-info-wrap"><div class="plan-day">Day 1: Oats & Fruits</div><div class="plan-desc">Breakfast: Oats porridge with mixed fruits.<br>Lunch: Grilled chicken, rice & salad.<br>Dinner: Light veg soup, toast.<br>Snack: Handful of nuts.</div></div></div>
+        <div class="plan-card"><img class="plan-img" src="https://images.pexels.com/photos/326278/pexels-photo-326278.jpeg?auto=compress&w=120" alt=""><div class="plan-info-wrap"><div class="plan-day">Day 2: Eggs & Quinoa</div><div class="plan-desc">Breakfast: Boiled eggs, toast.<br>Lunch: Quinoa & bean curry.<br>Dinner: Fish & veggies.<br>Snack: Yogurt.</div></div></div>
+        <div class="plan-card"><img class="plan-img" src="https://images.pexels.com/photos/414555/pexels-photo-414555.jpeg?auto=compress&w=120" alt=""><div class="plan-info-wrap"><div class="plan-day">Day 3: Smoothie & Salad</div><div class="plan-desc">Breakfast: Fruit smoothie.<br>Lunch: Lentil salad.<br>Dinner: Tofu stir fry & rice.<br>Snack: Berries.</div></div></div>
+        <div class="plan-card"><img class="plan-img" src="https://images.pexels.com/photos/1171170/pexels-photo-1171170.jpeg?auto=compress&w=120" alt=""><div class="plan-info-wrap"><div class="plan-day">Day 4: Veg Poha & Dal</div><div class="plan-desc">Breakfast: Veg poha.<br>Lunch: Dal, brown rice, salad.<br>Dinner: Grilled veg.<br>Snack: Papaya.</div></div></div>
+        <div class="plan-card"><img class="plan-img" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&w=120" alt=""><div class="plan-info-wrap"><div class="plan-day">Day 5: Millet & Paneer</div><div class="plan-desc">Breakfast: Millet porridge.<br>Lunch: Paneer, veggies.<br>Dinner: Baked falafel, couscous.<br>Snack: Chana.</div></div></div>
+        <div class="plan-card"><img class="plan-img" src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=120" alt=""><div class="plan-info-wrap"><div class="plan-day">Day 6: Nut Butter & Soup</div><div class="plan-desc">Breakfast: Bread + nut butter.<br>Lunch: Soup, paratha.<br>Dinner: Bean stew & bread.<br>Snack: Fruit/seeds.</div></div></div>
+        <div class="plan-card"><img class="plan-img" src="https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=120" alt=""><div class="plan-info-wrap"><div class="plan-day">Day 7: Muesli & Banana</div><div class="plan-desc">Breakfast: Muesli + banana.<br>Lunch: Chicken sandwich, salad.<br>Dinner: Veg stew.<br>Snack: Buttermilk.</div></div></div>
+      </div>
+      <button class="big-action-btn" style="margin-top:2em;" onclick="goSection(3)">Start Exercise</button>
+    </div>
+    <!-- PAGE 4: EXERCISES -->
+    <div class="section" id="section-exercise">
+      <div class="section-heading">7-Day Exercise Plan</div>
+      <div class="plan-group">
+        <div class="plan-card">
+          <iframe class="exercise-video" src="https://www.youtube.com/embed/_l3ySVKYVJ8" title="Push ups" frameborder="0" allowfullscreen></iframe>
+          <div class="plan-info-wrap">
+            <div class="plan-day">Day 1: Push Ups</div>
+            <div class="plan-desc">30 push ups: Builds chest, triceps, and core.<br><i>Start slow, keep elbows close to body.</i></div>
+          </div>
+        </div>
+        <div class="plan-card">
+          <iframe class="exercise-video" src="https://www.youtube.com/embed/IODxDxX7oi4" title="Squats" frameborder="0" allowfullscreen></iframe>
+          <div class="plan-info-wrap">
+            <div class="plan-day">Day 2: Squats</div>
+            <div class="plan-desc">40 squats: Strengthens legs and glutes.<br><i>Keep your knees in line with toes.</i></div>
+          </div>
+        </div>
+        <div class="plan-card">
+          <iframe class="exercise-video" src="https://www.youtube.com/embed/pSHjTRCQxIw" title="Plank" frameborder="0" allowfullscreen></iframe>
+          <div class="plan-info-wrap">
+            <div class="plan-day">Day 3: Plank</div>
+            <div class="plan-desc">3 x 30s planks: Core stability and posture.<br><i>Hold your back & hips straight.</i></div>
+          </div>
+        </div>
+        <div class="plan-card">
+          <iframe class="exercise-video" src="https://www.youtube.com/embed/8BcPHWGQO44" title="Mountain Climbers" frameborder="0" allowfullscreen></iframe>
+          <div class="plan-info-wrap">
+            <div class="plan-day">Day 4: Mountain Climbers</div>
+            <div class="plan-desc">3 x 25s sets: Cardio and core.<br><i>Quick knees, keep breathing!</i></div>
+          </div>
+        </div>
+        <div class="plan-card">
+          <iframe class="exercise-video" src="https://www.youtube.com/embed/2W4ZNSwoW_4" title="Jumping Jacks" frameborder="0" allowfullscreen></iframe>
+          <div class="plan-info-wrap">
+            <div class="plan-day">Day 5: Jumping Jacks</div>
+            <div class="plan-desc">50 reps: Full body warm up.<br><i>Arms and legs move in-sync.</i></div>
+          </div>
+        </div>
+        <div class="plan-card">
+          <iframe class="exercise-video" src="https://www.youtube.com/embed/QOVaHwm-Q6U" title="Lunges" frameborder="0" allowfullscreen></iframe>
+          <div class="plan-info-wrap">
+            <div class="plan-day">Day 6: Lunges</div>
+            <div class="plan-desc">30 lunges: Strengthens thighs/glutes.<br><i>Step forward, lower until knees bent at 90°.</i></div>
+          </div>
+        </div>
+        <div class="plan-card">
+          <iframe class="exercise-video" src="https://www.youtube.com/embed/VHY63-lRq6E" title="Brisk Walk/Yoga" frameborder="0" allowfullscreen></iframe>
+          <div class="plan-info-wrap">
+            <div class="plan-day">Day 7: Brisk Walk / Yoga</div>
+            <div class="plan-desc">20–30 minutes: Active rest; choose a brisk walk, or light yoga stretches.<br><i>Helps recovery, flexibility, reduces stress.</i></div>
+          </div>
+        </div>
+      </div>
+      <button class="big-action-btn" style="margin-top:2.2em;" onclick="goSection(4)">Reflect & Finish</button>
+    </div>
+    <!-- PAGE 5: REFLECTION -->
+    <div class="section" id="section-reflect">
+      <form class="reflect-card" id="reflectForm">
+        <div class="reflect-title">Share your feedback:</div>
+        <textarea required class="reflectbox" id="reflectbox" maxlength="180" placeholder="Write how you feel after your 7-day journey!"></textarea>
+        <button class="big-action-btn" type="submit">Submit Feedback</button>
+      </form>
+    </div>
+    <!-- PAGE 6: ABOUT YOU (User Profile + Reflection remark) -->
+    <div class="section" id="section-aboutyou">
+      <div class="about-card">
+        <div class="about-card-title">About You</div>
+        <div class="about-remark" id="aboutyou-remark"></div>
+        <div style="font-size:1.1em;" id="aboutyou-details">
+          <!-- Populated by JS -->
+        </div>
+        <button class="big-action-btn" style="margin-top:2em;" onclick="goSection(0)">Restart Journey</button>
+      </div>
+    </div>
+    <!-- About & Contact pages -->
+    <div class="section" id="section-about">
+      <div style="background:#fff;border-radius:18px;box-shadow:0 4px 19px #11b9ae44;max-width:650px;margin:3.5em auto;padding:2.5em 2em 2em 2em;">
+        <div class="section-heading" style="font-size:1.5em;">About Us</div>
+        <div style="font-size:1.13em;color:#167b6b;">
+          <b>Body Balance</b> delivers trusted weight-loss, exercise and well-being tips in a simple journey format.<br>
+          We believe health is a lifestyle, not a phase.<br>
+          Our team includes certified trainers and dieticians.
+        </div>
+      </div>
+    </div>
+    <div class="section" id="section-contact">
+      <div style="background:#fff;border-radius:18px;box-shadow:0 4px 19px #11b9ae44;max-width:650px;margin:3.5em auto;padding:2.5em 2em 2em 2em;">
+        <div class="section-heading" style="font-size:1.5em;">Contact</div>
+        <div style="font-size:1.1em;color:#177368;">
+          For queries or support:<br>
+          Email: <a href="mailto:support@bodybalance.com">support@bodybalance.com</a><br>
+          Phone: <a href="tel:1800040070">1800-040-070</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div class="footer">
+    © 2026 Body Balance | All rights reserved.
+  </div>
+  <script>
+    let userName = "", userAge = "", userWeight = "", userHeight = "", userReflection = "";
+    function hideAllSections() {
+      document.querySelectorAll('.section').forEach(sec=>sec.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(btn=>btn.classList.remove('active'));
+      document.querySelectorAll('.navlink').forEach(btn=>btn.classList.remove('selected'));
+    }
+    function goSection(idx) {
+      hideAllSections();
+      let ids = [
+        "section-welcome", "section-form", "section-diet",
+        "section-exercise", "section-reflect", "section-aboutyou"
+      ];
+      let nav = [
+        "navHome","navForm","navDiet","navExercise","navReflect","navAboutYou"
+      ];
+      document.getElementById(ids[idx]).classList.add("active");
+      if(idx < nav.length) document.getElementById(nav[idx]).classList.add("active");
+      window.scrollTo({top:0,behavior:'smooth'});
+      if(idx===2 && userName)
+        document.getElementById("diet-greeting").innerHTML = `Hello <b>${userName}</b>, let's start your journey!`;
+      if(idx===5) showAboutYouCard();
+    }
+    function showStaticSection(which){
+      hideAllSections();
+      document.getElementById("section-"+which).classList.add("active");
+      document.getElementById("navlink-"+which).classList.add("selected");
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+    function validateName(){
+      const el = document.getElementById('uname'), err = document.getElementById('err_uname'), val = el.value.trim();
+      if(!val){ el.classList.remove('valid'); el.classList.add('invalid'); err.textContent = "Name is required."; return false;}
+      if(!/^[a-zA-Z\s]+$/.test(val)){el.classList.remove('valid'); el.classList.add('invalid'); err.textContent="Only letters and spaces."; return false;}
+      el.classList.remove('invalid'); el.classList.add('valid'); err.textContent=""; return true;
+    }
+    function validateNum(id,min,max,msg){
+      const el = document.getElementById(id), err = document.getElementById('err_' + id), val = el.value.trim();
+      if(!val){ el.classList.remove('valid'); el.classList.add('invalid'); err.textContent = msg+" required."; return false;}
+      if(!/^\d+$/.test(val) || Number(val)<min||Number(val)>max){
+        el.classList.remove('valid'); el.classList.add('invalid'); err.textContent = msg+` must be ${min}-${max}`; return false;
+      }
+      el.classList.remove('invalid'); el.classList.add('valid'); err.textContent=""; return true;
+    }
+    document.getElementById('uname').oninput = validateName;
+    document.getElementById('age').oninput = function(){validateNum('age',10,120,"Age")};
+    document.getElementById('weight').oninput = function(){validateNum('weight',20,200,"Weight")};
+    document.getElementById('height').oninput = function(){validateNum('height',100,230,"Height")};
+    document.getElementById("userform").onsubmit=function(e){
+      e.preventDefault();
+      let v1=validateName(),
+          v2=validateNum('age',10,120,"Age"),
+          v3=validateNum('weight',20,200,"Weight"),
+          v4=validateNum('height',100,230,"Height");
+      if(!v1||!v2||!v3||!v4){
+        alert("Please correct the highlighted fields.");
+        return false;
+      }
+      userName=document.getElementById('uname').value.trim();
+      userAge=document.getElementById('age').value.trim();
+      userWeight=document.getElementById('weight').value.trim();
+      userHeight=document.getElementById('height').value.trim();
+      goSection(2);
+      alert("Info submitted! Ready to rock your plan! 🎉");
+      return false;
+    };
+    document.getElementById('reflectForm').onsubmit=function(e){
+      e.preventDefault();
+      userReflection = document.getElementById('reflectbox').value.trim();
+      if(!userReflection) { alert("Please enter your feedback!"); return false;}
+      alert("Thank you for your feedback!\nYou completed the journey!");
+      goSection(5);
+      document.getElementById('reflectbox').value="";
+      return false;
+    };
+
+    function showAboutYouCard() {
+      let html = `<b>Name:</b> ${userName || "-"}<br>
+          <b>Age:</b> ${userAge || "-"}<br>
+          <b>Weight:</b> ${userWeight ? userWeight + " kg" : "-"}<br>
+          <b>Height:</b> ${userHeight ? userHeight + " cm" : "-"}<br>`;
+      document.getElementById("aboutyou-details").innerHTML = html;
+
+      // Smart reflection remark: show "That's good Name, ..." if pattern matches (loss/lost x kg)
+      let remark = "";
+      let regex = /(loss|lost|lossed)[^\d]*?(\d{1,3})[\s\-]?kg/gi;
+      let match = regex.exec(userReflection);
+      if (match && userName && userWeight) {
+        let lossKg = match[2];
+        remark = `That's good <b>${userName}</b>, you've lost <b>${lossKg}kg</b> from <b>${userWeight}kg</b>!<br>${userReflection}`;
+      } else if (userReflection) {
+        remark = userReflection;
+      } else {
+        remark = "";
+      }
+      document.getElementById('aboutyou-remark').innerHTML = remark;
+    }
+
+    goSection(0);
+  </script>
+</body>
+</html>
